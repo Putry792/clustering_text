@@ -9,9 +9,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 from sklearn.cluster import KMeans
+import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from PIL import Image
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+from nltk.corpus import stopwords
+nltk_stopwords = set(stopwords.words('indonesian'))
 
 #  Konfigurasi Halaman 
 st.set_page_config(page_title="Prediksi Tren Penelitian", layout="centered")
