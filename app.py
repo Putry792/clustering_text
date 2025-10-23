@@ -1,6 +1,8 @@
 import streamlit as st
 import re
 import os 
+import io
+import sys
 import joblib
 import string
 import pandas as pd
@@ -16,20 +18,29 @@ from nltk.tokenize import word_tokenize
 from PIL import Image
 import contextlib
 
-# NLTK 
+
 nltk_data_path = os.path.join(os.getcwd(), "nltk_data")
 os.makedirs(nltk_data_path, exist_ok=True)
 nltk.data.path.append(nltk_data_path)
 
-with contextlib.redirect_stdout(None), contextlib.redirect_stderr(None):
-    for resource in ["stopwords", "punkt"]:
+# Sembunyikan semua output dari NLTK
+with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+    for resource in ["stopwords", "punkt", "punkt_tab"]:
         try:
-            nltk.data.find(f"corpora/{resource}") if resource == "stopwords" else nltk.data.find(f"tokenizers/{resource}")
+            # Deteksi lokasi berbeda untuk stopwords dan tokenizer
+            if resource == "stopwords":
+                nltk.data.find("corpora/stopwords")
+            elif resource == "punkt":
+                nltk.data.find("tokenizers/punkt")
+            elif resource == "punkt_tab":
+                nltk.data.find("tokenizers/punkt_tab")
         except LookupError:
-            nltk.download(resource, download_dir=nltk_data_path)
+            nltk.download(resource, download_dir=nltk_data_path, quiet=True)
 
 from nltk.corpus import stopwords
-nltk_stopwords = set(stopwords.words('indonesian'))
+from nltk.tokenize import word_tokenize
+
+nltk_stopwords = set(stopwords.words("indonesian"))
 
 #  Konfigurasi Halaman 
 st.set_page_config(page_title="Prediksi Tren Penelitian", layout="centered")
