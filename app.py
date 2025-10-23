@@ -1,5 +1,6 @@
 import streamlit as st
 import re
+import os 
 import joblib
 import string
 import pandas as pd
@@ -16,18 +17,16 @@ from PIL import Image
 import contextlib
 
 # NLTK 
-with contextlib.redirect_stdout(None):
+nltk_data_path = os.path.join(os.getcwd(), "nltk_data")
+os.makedirs(nltk_data_path, exist_ok=True)
+nltk.data.path.append(nltk_data_path)
+
+with contextlib.redirect_stdout(None), contextlib.redirect_stderr(None):
     for resource in ["stopwords", "punkt"]:
         try:
             nltk.data.find(f"corpora/{resource}") if resource == "stopwords" else nltk.data.find(f"tokenizers/{resource}")
         except LookupError:
-            nltk.download(resource)
-            
-for resource in ["stopwords", "punkt"]:
-    try:
-        nltk.data.find(f"corpora/{resource}") if resource == "stopwords" else nltk.data.find(f"tokenizers/{resource}")
-    except LookupError:
-        nltk.download(resource)
+            nltk.download(resource, download_dir=nltk_data_path)
 
 from nltk.corpus import stopwords
 nltk_stopwords = set(stopwords.words('indonesian'))
