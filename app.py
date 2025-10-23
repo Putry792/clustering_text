@@ -84,8 +84,20 @@ st.markdown("""
         margin-bottom: 8px;
         font-size: 15px;
     }
+     /* 🌙 Mode Gelap (Dark Mode) */
+    @media (prefers-color-scheme: dark) {
+        .scroll-box {
+            background-color: #1e1e1e;  /* warna latar belakang dark mode */
+            color: #f1f1f1;  /* warna teks agar kontras di dark mode */
+            border: 1px solid #444;
+        }
+        .scroll-box li {
+            color: #e0e0e0;
+        }
+    }
     </style>
 """, unsafe_allow_html=True)
+
 
 st.markdown("## 📊 Analisis Tren Judul Penelitian")
 
