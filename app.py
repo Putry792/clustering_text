@@ -212,7 +212,7 @@ cluster_labels = {
     7: "Pengembangan Aplikasi Sistem Informasi",
     8: "Kajian Budaya Etnis Sosial Masyarakat Perbatasan",
     9: "Pengembangan Bahan Ajar Calon Guru",
-    10: "Uji Efektifitas Tanaman sebagai Penghasil Senyawa Antibakteri dan Kajian Konservasi Lahan Gambut"
+    10: "Uji Efektifitas Tanaman sebagai Penghasil Senyawa Antibakteri"
 }
 
 if judul_input:
