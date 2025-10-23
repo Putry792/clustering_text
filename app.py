@@ -13,14 +13,16 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from PIL import Image
+import contextlib
 
 # NLTK 
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords')
-
-
+with contextlib.redirect_stdout(None):
+    for resource in ["stopwords", "punkt"]:
+        try:
+            nltk.data.find(f"corpora/{resource}") if resource == "stopwords" else nltk.data.find(f"tokenizers/{resource}")
+        except LookupError:
+            nltk.download(resource)
+            
 for resource in ["stopwords", "punkt"]:
     try:
         nltk.data.find(f"corpora/{resource}") if resource == "stopwords" else nltk.data.find(f"tokenizers/{resource}")
