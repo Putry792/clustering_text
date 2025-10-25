@@ -17,7 +17,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from PIL import Image
 import contextlib
-
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 nltk_data_path = os.path.join(os.getcwd(), "nltk_data")
 os.makedirs(nltk_data_path, exist_ok=True)
@@ -25,20 +26,18 @@ nltk.data.path.append(nltk_data_path)
 
 # Sembunyikan semua output dari NLTK
 with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
-    for resource in ["stopwords", "punkt", "punkt_tab"]:
+    resources = {
+        "stopwords": "corpora/stopwords",
+        "punkt": "tokenizers/punkt"
+    }
+
+    for resource, path in resources.items():
         try:
-            # Deteksi lokasi berbeda untuk stopwords dan tokenizer
-            if resource == "stopwords":
-                nltk.data.find("corpora/stopwords")
-            elif resource == "punkt":
-                nltk.data.find("tokenizers/punkt")
-            elif resource == "punkt_tab":
-                nltk.data.find("tokenizers/punkt_tab")
+            nltk.data.find(path)
         except LookupError:
             nltk.download(resource, download_dir=nltk_data_path, quiet=True)
 
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+
 
 nltk_stopwords = set(stopwords.words("indonesian"))
 
