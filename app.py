@@ -202,16 +202,16 @@ judul_input = st.text_input("Masukkan judul penelitian:")
 
 # Mapping antara nomor cluster dan nama tren/topik
 cluster_labels = {
-    0: "Evaluasi Kinerja Keuangan di Sebuah Perusahaan",
-    1: "Evaluasi Implementasi Kurikulum atau Pembelajaran di Sekolah",
-    2: "Implementasi Media atau Teknologi Pembelajaran sebagai Strategi Pembelajaran di Sekolah",
-    3: "Sumber Daya Energi Terbarukan",
-    4: "Machine Learning, NLP",
-    5: "Implementasi Media Belajar Interaktif di Sekolah (Augmented Reality, Video Animasi)",
-    6: "Pemanfaatan Jenis Tumbuhan sebagai Obat Tradisional (Etnobotani)",
-    7: "Pengembangan Aplikasi Sistem Informasi",
+    0: "Evaluasi Kinerja Keuangan",
+    1: "Evaluasi Implementasi Kurikulum pada Pembelajaran Sekolah",
+    2: "Implementasi Media Belajar sebagai Strategi Pembelajaran Sekolah",
+    3: "Peran Ekonomi Kreatif Terhadap Pertumbuhan Ekonomi",
+    4: "Uji Kuantitas Terhadap Akurasi Mesin Penerjemah Statistik",
+    5: "Pembelajaran Berbantuan Media Belajar Interaktif",
+    6: "Pemanfaatan Tumbuhan Berkhasiat Obat oleh Masyarakat (Etnobotani)",
+    7: "Pengembangan Aplikasi Sistem Informasi atau Sistem Informasi Geografis",
     8: "Kajian Budaya Etnis Sosial Masyarakat Perbatasan",
-    9: "Pengembangan Bahan Ajar Calon Guru",
+    9: "Pengembangan Bahan Ajar Peserta Didik Bagi Calon Guru",
     10: "Uji Efektifitas Tanaman sebagai Penghasil Senyawa Antibakteri"
 }
 
