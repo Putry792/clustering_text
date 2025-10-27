@@ -274,9 +274,14 @@ if judul_input:
                 st.warning("Tidak ada teks valid dalam cluster ini untuk dibuat WordCloud.")
         else:
             st.warning(f"Tidak ditemukan data untuk cluster {cluster_pred}. Coba input judul lain.")
-        
+
+# visualisasi elbow
+st.markdown("#### Visualisasi Elbow Method pada Proses Klasterisasi:")
+img_path_el = os.path.join("assets", "img", "Elbow.png")
+image = Image.open(img_path_el)
+st.image(image, caption="Visualisasi Hasil Elbow Method", use_container_width=True)
 # visualisasi 
-st.markdown("### 🎨 Visualisasi Klasterisasi Judul Penelitian:")
+st.markdown("#### Visualisasi Klasterisasi Judul Penelitian:")
 img_path = os.path.join("assets", "img", "visualisasi.png")
 image = Image.open(img_path)
 st.image(image, caption="Visualisasi Hasil Klasterisasi", use_container_width=True)
