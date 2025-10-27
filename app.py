@@ -27,8 +27,9 @@ nltk.data.path.append(nltk_data_path)
 # Sembunyikan semua output dari NLTK
 with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
     resources = {
-        "stopwords": "corpora/stopwords",
-        "punkt": "tokenizers/punkt"
+    "stopwords": "corpora/stopwords",
+    "punkt": "tokenizers/punkt",
+    "punkt_tab": "tokenizers/punkt_tab"
     }
 
     for resource, path in resources.items():
