@@ -276,5 +276,6 @@ if judul_input:
         
 # visualisasi 
 st.markdown("### 🎨 Visualisasi Klasterisasi Judul Penelitian:")
-image = Image.open("assets/img/visualisasi.png")
-st.image(image, caption="Visualisasi Hasil Klasterisasi", use_container_width=True)
+img_path = os.path.join("assets", "img", "visualisasi.png")
+image = Image.open(img_path)
+st.image(image, caption="Visualisasi Hasil Klasterisasi", use_column_width=True)
