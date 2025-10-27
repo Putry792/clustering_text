@@ -239,13 +239,17 @@ if judul_input:
 
         # cluster_pred_value = cluster_pred[0]
         # similar_titles = df[(df["cluster"] == cluster_pred_value) & (df["judul_indo"] != judul_input)]["judul_indo"].values.tolist()
-
+        
         if len(similar_titles) > 0:
          list_items = "".join([f"<li>{t}</li>" for t in similar_titles])
          st.markdown(f"<div class='scroll-box'><ol>{list_items}</ol></div>", unsafe_allow_html=True)
         else:
          st.write("Tidak ada judul lain dalam tren ini.")
-
+        
+        st.write("")
+        count_in_cluster = len(similar_titles)
+        total_titles = len(df)
+        st.info(f"📈 Jumlah penelitian dalam tren ini: **{count_in_cluster} dari {total_titles} total judul.**")    
         # ☁️ Word Cloud Tren Ini
         st.markdown("### ☁️ Word Cloud Tren Ini:")
 
@@ -269,7 +273,8 @@ if judul_input:
                 st.warning("Tidak ada teks valid dalam cluster ini untuk dibuat WordCloud.")
         else:
             st.warning(f"Tidak ditemukan data untuk cluster {cluster_pred}. Coba input judul lain.")
-
-        count_in_cluster = len(similar_titles)
-        total_titles = len(df)
-        st.info(f"📈 Jumlah penelitian dalam tren ini: **{count_in_cluster} dari {total_titles} total judul.**")    
+        
+# visualisasi 
+st.markdown("### 🎨 Visualisasi Klasterisasi Judul Penelitian:")
+image = Image.open("assets/img/visualisasi.png")
+st.image(image, caption="Visualisasi Hasil Klasterisasi", use_container_width=True)
